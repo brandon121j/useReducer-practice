@@ -1,4 +1,12 @@
 .App {
   text-align: center;
+  display: flex;
+  justify-content: center;
+  padding: 50px;
 }
 
+.appContainer {
+  justify-content: center;
+  display: flex;
+  flex-direction: row;
+}

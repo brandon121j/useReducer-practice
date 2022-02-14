@@ -1,5 +1,5 @@
 import './App.css';
-import React, { useReducer } from 'react';
+import React, { useReducer, useState } from 'react';
 
 const ACTIONS = {
   INCREMENT: 'increment',
@@ -23,8 +23,10 @@ const countReducer = (state, action) => {
   }
 };
 
+
 function App() {
-	const [state, dispatch] = useReducer(countReducer, 0);
+  const [changer, setChanger] = useState(0);
+  const [state, dispatch] = useReducer(countReducer, 0);
 	return (
 		<div className="App">
 			<div className="appContainer">
@@ -32,13 +34,16 @@ function App() {
 				<button onClick={() => dispatch({ type: ACTIONS.DECREMENT })}>-</button>
 				<h1>{state}</h1>
 				<button onClick={() => dispatch({ type: ACTIONS.INCREMENT })}>+</button>
-				<button
+				<div className="changeCount">
+        <button
 					onClick={() =>
-						dispatch({ type: ACTIONS.CHANGE_COUNT, payload: { amount: 5 } })
+						dispatch({ type: ACTIONS.CHANGE_COUNT, payload: { amount: changer } })
 					}
 				>
 					Change Count
 				</button>
+        <input type="number" onChange={() => console.log(this)}/>
+        </div>
 			</div>
 		</div>
 	);
